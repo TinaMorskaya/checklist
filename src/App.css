@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700|Noto+Sans+SC:400,700|Overpass:400,700|Reem+Kufi|Roboto+Condensed:400,700|Roboto:400,700|Rubik:400,400i,700&subset=arabic,chinese-simplified,cyrillic,cyrillic-ext,greek,greek-ext,hebrew,japanese,latin-ext,vietnamese');
+
+* {
+    font-family:'Lato','Overpass','Roboto','Noto Sans JP','Rubik','Noto Sans SC','Reem Kufi', 'Roboto Condensed', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.ownBody {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+}
+h1 {
+    font-size: 2.5em;
+    order:1;
+    padding: 30px;
+}
+.nameNewHabit {
+    outline: none;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    border: 0px;
+    resize: none;
+    max-height: 80px;
+    order:2;
+}
+.days {
+    order: 4;
+    display: flex;
+    justify-content: center;
+}
+#daysss {
+    margin-top: 20px;
+    max-width: 315px; 
+    margin-bottom: 40px;
+}
+.days_container {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    align-content: center; 
+    justify-content: flex-start;
+    margin-bottom: 25px;
+}
+
+.day_item, .offsetday {  
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    border: 1px black solid;
+    margin: 4px;
+    margin-bottom: 15px; 
+    page-break-inside: avoid;
+    break-inside: avoid;
+    
+}
+.week{
+    border-color: white;
+    font-size: 1em;
+    margin-bottom: 0px; 
+    height: 20px;
+}
+.offsetday {
+    border-color: white;
+}
+
+.rules {
+    order: 3;
+    font-size: 1.5em;
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    align-content: center; 
+    justify-content: center;
+    font-weight: bold;
+}
+.rule {
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    border: 1px black solid;
+    margin: 10px;
+}
+
+#yourrules {
+    flex-basis: 100%;
+    text-align: center;
+    border: 0px;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    margin-bottom: 30px;
+
+}
+.textrule { 
+    padding-top: 6px;
+    font-size: 0.8em;
+    opacity: 0.2;
+}
+h2 {
+    border-radius: 10px/20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    font-size: 0.7em;
+    text-align: center;
+    order: 5;
+    width: 90%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 3%;
+    font-weight: normal;
+}
+aside{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center; 
+    justify-content: center;
+    order: 5;
+    margin-bottom: 40px;
+}
+
+#settings {
+    margin-top: 0px;
+    outline: none;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: none;
+    height: 45px;
+    flex-basis: 95%;
+    order:1;
+    background-color: white;
+    border-radius: 10px/20px;
+    transition: all 0.32s linear;
+}
+
+#settings:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+form {
+    flex-basis: 95%;
+    height: 50%;
+    order: 2;
+}
+fieldset {
+    border:0px;
+    margin-top: 20px;
+    border-radius: 5%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: all 0.32s linear;
+}
+
+.hiddenSettings {
+    opacity: 0;
+}
+
+.openSettings {
+    opacity: 1;
+}
+
+#whitesqer{
+    height: 20px;
+}
+
+.openDate {
+    transition: all 0.32s linear;  
+}
+
+label[for="date"] { 
+    margin-top: 40px;
+    font-size: 1.1em;
+}
+input[type="date"] {
+    background: gainsboro;
+    margin-top: 10px; 
+    
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.2em; 
+    height: 50px;
+    text-align: center;
+    outline: none;
+    border: 1px solid gainsboro;
+    transition: all 0.32s linear;
+}
+
+input[type="date"]:hover {
+    border: 1px rgb(105, 112, 112) solid;
+    border-image-slice: 20;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+label[for="number"], h3 {
+    font-size: 1.1em;
+    width: 100%;
+    font-weight: normal;
+}
+
+p {
+    font-size: 0.8em;
+    width: 100%
+}
+
+.number {
+    background: gainsboro;
+    margin: 10px;
+    margin-top: 0px;
+    outline: none;
+    font-weight: bold;
+    text-align: center; 
+    font-size: 1.1em;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    border: 1px solid gainsboro;
+}
+
+.number:hover {
+    border: 1px rgb(105, 112, 112) solid;
+    transition: all 0.32s linear;
+}
+
+.invalidNumber {
+    background-color: red;
+}
+
+label[for="Choice1"] {
+    margin-right: 10px;
+}
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-top: 20px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    transition: 0.2s border linear;
+    outline: none;
+  
+  }
+  
+input[type="radio"]:checked {
+    border: 8px solid rgb(197, 196, 196);;
+  }
+  
+input[type=submit] {
+    font-weight: bold;
+    width: 100%;
+    order:4;
+    font-size: 1em;
+    border: 2px;
+    background: none;
+    height: 50px;
+    border-radius: 10px/20px;
+    outline: none;
+}
+
+input[type=submit]:hover {
+   text-shadow: 3px 3px 3px rgb(165, 162, 162);
+}
+
+footer {
+    order: 6;
+    background-color: white;
+}
+
+#error {
+    font-size: 1em;
+    visibility: hidden;
+}
+
+
+@media all and (max-width: 650px) {
+    .ownBody {flex-direction: column; align-items: center; justify-content: center;}
+    h1 {font-size: 2em; flex-basis: 5%;padding-top: 25px}
+    .nameNewHabit { max-width: 310px; flex-basis: 10%; font-size: 1.2em} 
+    aside {flex-basis:10%}
+    .days {flex-basis: 60%}
+    footer {flex-basis: 5%; margin-bottom: 10px;}
+    .textrule { padding: 5px; }
+    .rules {flex-basis: 10%; font-size: 1.3em; flex-flow: row wrap; }
+    .rule {margin-bottom: 5px;}
+    .week {margin-bottom: 0px; }
+    .rule {width: 35px; height: 35px;}
+    h1 { padding-top: 5px;}
+    #yourrules {margin-bottom: 5px;}
+    #daysss {margin-bottom: 10px;}
+
+}
+
+  @media screen  and (max-width: 650px) { 
+    .day_item,.rule, .offsetday  {width: 35px; height: 35px;}
+    .day_item, .offsetday {margin:5px;}
+    #daysss {max-width: 335px; }
+    footer { border-radius: 10px/20px; 
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
+        padding: 10px; width: 90%; }
+  }
+
+  @media all and (max-width: 334px) { 
+    .day_item,.rule, .offsetday {width: 33px; height: 33px;}
+  }
+
+  @media screen and (min-width: 651px) {
+    ownBody {flex-direction: row nowrap} 
+    h1,.nameNewHabit, .rules,aside { flex-basis: 100%} 
+    aside, .rules { flex: 1 6 28%; }
+    .days {flex: 3 1 44%;}
+    .settings {flex-basis: 100%}
+    footer { bottom: 20px; border-radius: 10px/20px;
+        text-align: center; left: 0;  padding: 5px; 
+        width: 20%; margin-left: 40%; margin-right: 40%; margin-bottom: 30px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
+    }
+  }
+
+  @media screen and (min-height: 850px) {
+      footer {position: fixed; margin-bottom: 10px};
+      #daysss {margin-bottom: 20px;}
+  }
+
+  @media print and (pointer:fine)  {
+    .day_item,.rule, .offsetday  {width: 30px; height: 30px;}
+    .day_item, .offsetday {margin:5px;}
+    aside,h2 {display: none;}
+    .textrule {visibility: hidden;}
+    footer {position: fixed; bottom: 0px; width: 100%; margin:0px;}
+    .days_container { margin-bottom: 12px;}
+  }
+  @media  print and (min-width: 651px) {
+    aside {display:none;}
+    aside, .rules { flex: 1 10 10%; }
+    .days {flex: 3 1 80%;}
+  }
