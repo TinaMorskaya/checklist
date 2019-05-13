@@ -106,16 +106,13 @@ function CreateContainer (props) {
   
 function Days () {
     const calendar = useContext(CalendarSettings);
-    let days = calendar.days;
+    /*let days = calendar.days;
     console.log(days)
-    let prevDays = 30;
-    if (!days || parseInt(days) < 7 || parseInt(days) > 62) {
-        days = prevDays
-    }
-    else {
-        prevDays = days
-    }
-    const containerItemList = createContainerItemList(calendar.view, calendar.date, days);
+    var prevDays 
+    (!days || parseInt(days) < 7 || parseInt(days) > 62) ? prevDays = (prevDays || 30)
+    : prevDays = days; */
+    console.log (calendar.view)
+    const containerItemList = createContainerItemList(calendar.view, calendar.date, calendar.days);
     return(
         <div className="days">
           <div id="daysss">
