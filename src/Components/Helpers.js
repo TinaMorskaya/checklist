@@ -14,8 +14,8 @@ function getCurrentDate() {
     return yeardate + "-" + monthdate + "-" + daydate;
   }
   
-  function isNumberOfDaysCorrect(event) {
-    let text = event.target.value;
+function isNumberOfDaysCorrect(text) {
+  if (text) {
     const pattern = "0123456789"; 
     for (let i=0; i<text.length; i++) {
       var c = text.charAt(i);
@@ -23,5 +23,6 @@ function getCurrentDate() {
         return false;
       }
     }
-    return true
   }
+  return true
+}

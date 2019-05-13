@@ -1,6 +1,7 @@
-import React, { Component, PureComponent} from "react";
+import React, { useState, PureComponent, useContext} from "react";
 import "/Users/vasiliy/Desktop/Checklist2_Print/src/App.css"
 import {getCurrentDate, isNumberOfDaysCorrect} from "./Helpers.js"
+import {SetupItemDispatch, CalendarSettings} from "../App.js"
 export {Aside}
 
 class SubmitOk extends PureComponent {
@@ -10,32 +11,40 @@ class SubmitOk extends PureComponent {
       )
     }
   }
-  
-  class DateStart extends PureComponent {
-    render() {
-      var today = getCurrentDate();
-      const selected = this.props.selected;
-        return(
-          <div className="openDate" style={selected.userView=="Simple list"? 
-              {visibility: "hidden",transform: "scale(0,0)"}: 
-              {visibility: "visible"}}>
-            <label htmlFor="date">Enter the date you want to start..</label>
-            <input id="date" type="date" name="userDate" 
-              min={today}  
-              defaultValue={selected.userDate || today}/>
-          </div>
-        )  
-    } 
+
+function DateStart () {
+  const dispatch = useContext(SetupItemDispatch);
+  const calendar = useContext(CalendarSettings);
+  var today = getCurrentDate();
+  function handleDate (event) {
+      console.log (event.target)
+      console.log (event.target.value);
+      dispatch({
+        name: event.target.name, value: event.target.value})
   }
+  return(
+      <div className="openDate" style={calendar.date == "Simple list"
+          ? {visibility: "hidden",transform: "scale(0,0)"}
+          : {visibility: "visible"}}>
+          <label htmlFor="date">Enter the date you want to start..</label>
+          <input id="date" type="date" name="userDate" 
+            min={today} 
+            value={calendar.date || today}
+            onChange={handleDate}
+          />
+      </div>
+      )  
+  }
+
   
-  
-  class HowDays extends PureComponent {
-    render() {
-      const days = this.props.selectedDays;
-      let validationStyle = (days < 7 || days > 62)?
-        {backgroundColor: "rgb(255, 178, 178)"} : {backgroundColor: "gainsboro"}
-      return(
-        <React.Fragment>
+ function HowDays () {
+    const dispatch = useContext(SetupItemDispatch);
+    const calendar = useContext(CalendarSettings);
+    let validationStyle = (calendar.days < 7 || calendar.days > 62)
+    ? {backgroundColor: "rgb(255, 178, 178)"} 
+    : {backgroundColor: "gainsboro"}
+    return(
+        <>
           <label htmlFor="number">How many days you need?</label>
           <br/>
           <p>The range of 7 to 62 days.</p>
@@ -43,97 +52,71 @@ class SubmitOk extends PureComponent {
           <input type="text"  mozactionhint="next" 
             title="You can enter only the number of days" 
             maxLength="2" minLength="1" className="number" name="userDays" 
-            defaultValue={days} 
+            value={calendar.days}
+            onChange={(event)=> dispatch({
+                name: event.target.name, value: event.target.value})}
             style={validationStyle}/>
-        </React.Fragment>
+        </>
       )
     }
-  }
   
-  class ChoiceView extends PureComponent {
-    render() {
-      const choice = this.props;
-      return(
-        <div>
-          <label htmlFor={choice.id}>{choice.value}</label>
-          <input type="radio" 
-            id={choice.id} 
-            name="userView"
-            value={choice.value}
-            defaultChecked={(choice.value==choice.selectedView)? true : false}/>  
-        </div>
-      )
-    }
-  }
+function ChoiceView () {
+    const choices = ["Simple list", "Days of the week", "Separation by month"];
+    const dispatch = useContext(SetupItemDispatch);
+    const calendar = useContext(CalendarSettings);
+    return(
+    <>
+        {choices.map((choice, i) => 
+            <div key={choice}>
+                <label htmlFor={"Choice" + i}>{choice}</label>
+                <input type="radio" 
+                    id={"Choice" + i} 
+                    name="userView"
+                    value={choice}
+                    checked={(choice==calendar.view)? true : false}
+                    onChange={(event)=> dispatch({
+                        name: event.target.name, value: event.target.value})}
+                />
+            </div>
+        )} 
+    </> 
+    )
+}
   
-  class Form extends PureComponent {
-    render() {
-      const choices = ["Simple list", "Days of the week", "Separation by month"];
-      const selected = this.props.userParam;
-      return(
+function Form (props) {
+    return(
         <form>
-          <fieldset className={this.props.settingsOpacity} >
+          <fieldset className={props.settingsOpacity} >
             <div id="whitesqer"></div>
             <h3>Please, select your preferred view:</h3>
-            {choices.map((choice, i) =>
-              <ChoiceView 
-                key={choice} 
-                id={"Choice" + i}
-                value={choice} 
-                selectedView = {selected.userView}/>
-              )
-            }
-            <HowDays 
-              selectedDays = {selected.userDays}/>
-            <DateStart 
-              selected = {selected}/>
-            <br/>         
-            <SubmitOk/>
+            {props.children}
           </fieldset>
         </form>
-      )
-    }
-  }
+    )
+}
   
-  class Settings extends PureComponent {
-    constructor(props) {
-      super(props);
-      this.clickSettings = this.clickSettings.bind(this);
-    }
-    clickSettings(e) {
-      this.props.onClickSettings();
-    }
-    render() {
-      return(
-        <button id="settings" onClick={this.clickSettings}>Settings</button>
-      )
-    }
-  }
+function Settings (props) {
+    return(
+        <button id="settings" onClick={props.onClickSettings}>Settings</button>
+    )
+}
   
-  class Aside extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        settingsOpacity: "hiddenSettings",
-      };
-      this.changeSettingsOpacity = this.changeSettingsOpacity.bind(this);
+function Aside () {
+    const [settingsOpacity, setSettingsOpacity] = useState ("hidden")
+    function changeSettingsOpacity() {
+        setSettingsOpacity((settingsOpacity== "hidden") ? "open" : "hidden")
     }
-    changeSettingsOpacity() {
-      var css = (this.state.settingsOpacity == "hiddenSettings") ? 
-        "openSettings" : "hiddenSettings";
-      this.setState({
-        settingsOpacity: css
-      });
-    }
-    render() {
-      return (
+    return (
         <aside>
           <Settings 
-            onClickSettings={this.changeSettingsOpacity}/>
-          <Form 
-            settingsOpacity={this.state.settingsOpacity}
-            userParam={this.props.userParam}/>
+                onClickSettings={changeSettingsOpacity}/>
+          <Form settingsOpacity={settingsOpacity}>
+                <ChoiceView/>
+                <HowDays />
+                <DateStart />
+                <br/>         
+                <SubmitOk/>
+          </Form>
         </aside>
-      )
-    }
-  }
+    )
+}
