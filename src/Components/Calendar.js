@@ -1,11 +1,10 @@
-import React, {Component} from "react";
-import "/Users/vasiliy/Desktop/Checklist2_Print/src/App.css"
-import {getCurrentDate, isNumberOfDaysCorrect} from "./Helpers.js"
+import React, {useContext} from "react";
+import "/Users/vasiliy/Desktop/Checklist2_Print/src/App.css";
+import {SetupItemDispatch, CalendarSettings} from "../App.js"
 export {Days}
 
-function createContainerItemList(view,date,days) {
+function createContainerItemList(view,startDate,days) {
     days = parseInt(days);
-    var startDate = (date)? date: getCurrentDate();
     startDate = new Date (startDate);
     var offSetFirstMonth = startDate.getDay();
     var endDate  = new Date (startDate);
@@ -105,11 +104,33 @@ function CreateContainer (props) {
     )
   }
   
-/*function Dayys (props) {
-    if (props.userParam.createCalendar == false) return null
+function Days () {
+    const calendar = useContext(CalendarSettings);
+    let days = calendar.days;
+    console.log(days)
+    let prevDays = 30;
+    if (!days || parseInt(days) < 7 || parseInt(days) > 62) {
+        days = prevDays
+    }
+    else {
+        prevDays = days
+    }
+    const containerItemList = createContainerItemList(calendar.view, calendar.date, days);
+    return(
+        <div className="days">
+          <div id="daysss">
+            {containerItemList.map((month) => <CreateContainer
+                key = {month.toString()} 
+                offSet = {month[1]}
+                countOfDays = {month[0]}
+                view={calendar.view}/>
+            )} 
+          </div>
+        </div>
+      )
 }
-*/
-class Days extends Component {
+
+/*class Days extends Component {
     shouldComponentUpdate(nextProps) {
       return nextProps.userParam.createCalendar == true
     }
@@ -117,7 +138,7 @@ class Days extends Component {
       const userParam = this.props.userParam
       /*if (!userParam.createCalendar) {
         return null;
-      }*/
+      }
       const view = userParam.userView;
       const date = userParam.userDate;
       const days = userParam.userDays;
@@ -136,7 +157,7 @@ class Days extends Component {
       )
     }
   }
-
+*/
 /*class Days extends Component {
     shouldComponentUpdate(nextProps) {
       return nextProps.userParam.createCalendar == true
