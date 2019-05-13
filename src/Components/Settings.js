@@ -15,22 +15,26 @@ class SubmitOk extends PureComponent {
 function DateStart () {
   const dispatch = useContext(SetupItemDispatch);
   const calendar = useContext(CalendarSettings);
-  var today = getCurrentDate();
-  function handleDate (event) {
-      console.log (event.target)
-      console.log (event.target.value);
-      dispatch({
-        name: event.target.name, value: event.target.value})
+  const [userDate, setUserDate] = useState (calendar.date)
+  function handler (event) {
+    let value = event.target.value;
+    if (value) {
+       let valid = new Date(value)- new Date(getCurrentDate())
+       if (valid > 0) {
+           dispatch({name: event.target.name, value: value})
+       }
+    }
+    setUserDate(value);
   }
   return(
-      <div className="openDate" style={calendar.date == "Simple list"
+      <div className="openDate" style={userDate == "Simple list"
           ? {visibility: "hidden",transform: "scale(0,0)"}
           : {visibility: "visible"}}>
           <label htmlFor="date">Enter the date you want to start..</label>
           <input id="date" type="date" name="userDate" 
-            min={today} 
-            value={calendar.date || today}
-            onChange={handleDate}
+            min={getCurrentDate()} 
+            value={userDate}
+            onChange={handler}
           />
       </div>
       )  
@@ -40,7 +44,22 @@ function DateStart () {
  function HowDays () {
     const dispatch = useContext(SetupItemDispatch);
     const calendar = useContext(CalendarSettings);
-    let validationStyle = (calendar.days < 7 || calendar.days > 62)
+    const [userDays, setUserDays] = useState (calendar.days);
+    function handler (event) {
+        let value = event.target.value;
+        if (isNumberOfDaysCorrect(value)) {
+            setUserDays(value);
+            if (value) {
+                value = parseInt(value);
+
+                if (value > 7 && value < 62) {
+                    dispatch({
+                        name: event.target.name, value: value})
+                }   
+            }   
+        }
+    }
+    let validationStyle = (userDays < 7 || userDays > 62)
     ? {backgroundColor: "rgb(255, 178, 178)"} 
     : {backgroundColor: "gainsboro"}
     return(
@@ -52,9 +71,8 @@ function DateStart () {
           <input type="text"  mozactionhint="next" 
             title="You can enter only the number of days" 
             maxLength="2" minLength="1" className="number" name="userDays" 
-            value={calendar.days}
-            onChange={(event)=> dispatch({
-                name: event.target.name, value: event.target.value})}
+            value={userDays}
+            onChange={handler}
             style={validationStyle}/>
         </>
       )
