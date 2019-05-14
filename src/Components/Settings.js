@@ -4,13 +4,6 @@ import {getCurrentDate, isNumberOfDaysCorrect} from "./Helpers.js"
 import {SetupItemDispatch, CalendarSettings} from "../App.js"
 export {Aside}
 
-class SubmitOk extends PureComponent {
-    render() {
-      return(
-        <input type="submit" value="Ok"/>
-      )
-    }
-  }
 
 function DateStart () {
   const dispatch = useContext(SetupItemDispatch);
@@ -19,14 +12,14 @@ function DateStart () {
   function handler (event) {
     let value = event.target.value;
     if (value) {
-       let valid = new Date(value)- new Date(getCurrentDate())
-       if (valid > 0) {
+      let valid = new Date(value)- new Date(getCurrentDate())
+      if (valid >= 0) {
            dispatch({name: event.target.name, value: value})
-       }
+      }
     }
     setUserDate(value);
   }
-  return(
+   return(
       <div className="openDate" style={userDate == "Simple list"
           ? {visibility: "hidden",transform: "scale(0,0)"}
           : {visibility: "visible"}}>
@@ -42,17 +35,17 @@ function DateStart () {
 
   
  function HowDays () {
-    const dispatch = useContext(SetupItemDispatch);
-    const calendar = useContext(CalendarSettings);
-    const [userDays, setUserDays] = useState (calendar.days);
-    function handler (event) {
-        let value = event.target.value;
-        if (isNumberOfDaysCorrect(value)) {
-            setUserDays(value);
-            if (value) {
-                value = parseInt(value);
+  const dispatch = useContext(SetupItemDispatch);
+  const calendar = useContext(CalendarSettings);
+  const [userDays, setUserDays] = useState (calendar.days);
+  function handler (event) {
+    let value = event.target.value;
+    if (isNumberOfDaysCorrect(value)) {
+      setUserDays(value);
+        if (value) {
+          value = parseInt(value);
 
-                if (value > 7 && value < 62) {
+                if (value > 6 && value < 63) {
                     dispatch({
                         name: event.target.name, value: value})
                 }   
@@ -83,10 +76,9 @@ function ChoiceView () {
     const dispatch = useContext(SetupItemDispatch);
     const calendar = useContext(CalendarSettings);
     return(
-    <>
+    <div className="choicesView">
         {choices.map((choice, i) => 
-            <div key={choice}>
-                <label htmlFor={"Choice" + i}>{choice}</label>
+            <div key={choice} className="alignLebel ">
                 <input type="radio" 
                     id={"Choice" + i} 
                     name="userView"
@@ -95,9 +87,10 @@ function ChoiceView () {
                     onChange={(event)=> dispatch({
                         name: event.target.name, value: event.target.value})}
                 />
+                <label htmlFor={"Choice" + i}>{choice}</label>
             </div>
         )} 
-    </> 
+    </div> 
     )
 }
   
@@ -120,9 +113,10 @@ function Settings (props) {
 }
   
 function Aside () {
-    const [settingsOpacity, setSettingsOpacity] = useState ("hidden")
-    function changeSettingsOpacity() {
-        setSettingsOpacity((settingsOpacity== "hidden") ? "open" : "hidden")
+  const [settingsOpacity, setSettingsOpacity] = useState ("hiddenSettings")
+  function changeSettingsOpacity() {
+      setSettingsOpacity((settingsOpacity== "hiddenSettings") ? "openSettings" 
+      : "hiddenSettings")
     }
     return (
         <aside>
@@ -133,7 +127,6 @@ function Aside () {
                 <HowDays />
                 <DateStart />
                 <br/>         
-                <SubmitOk/>
           </Form>
         </aside>
     )

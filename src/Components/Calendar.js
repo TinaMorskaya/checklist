@@ -25,36 +25,7 @@ function createContainerItemList(view,startDate,days) {
     return containerItemList
   }
 
-
-/*class CreateContainerItemList extends Component {
-    render() {
-        const view = this.props.userParam.userView;
-        let date = this.props.userParam.userDate;
-        let days = this.props.userParam.userDays;
-        days = parseInt(days);
-        var startDate = (date)? date: getCurrentDate();
-        startDate = new Date (startDate);
-        var offSetFirstMonth = startDate.getDay();
-        var endDate  = new Date (startDate);
-        endDate.setDate((startDate.getDate() + days - 1));
-        var containerItemList = [];
-        var monthStart = startDate.getMonth();
-        if (view == "Separation by month") {
-            for (var i=0; endDate.getMonth() != monthStart; i++) {
-                var oneMonth = endDate.getDate();
-                endDate.setDate(1);
-                var oneOffset = endDate.getDay();
-                containerItemList.unshift([oneMonth, oneOffset]);
-                endDate.setDate(endDate.getDate()-1);
-            }
-            days = days - containerItemList.reduce(function (x,y) {return x + y[0]},0);
-        }
-        containerItemList.unshift([days, offSetFirstMonth]);
-        console.log(containerItemList)
-        return containerItemList
-    }
-}  
-*/    
+  
 function CreateOneLiElementInConteiner(props) {
     let classLi = props.className;
     let intoLi = (props.inner)? props.inner : "";
@@ -106,16 +77,11 @@ function CreateContainer (props) {
   
 function Days () {
     const calendar = useContext(CalendarSettings);
-    /*let days = calendar.days;
-    console.log(days)
-    var prevDays 
-    (!days || parseInt(days) < 7 || parseInt(days) > 62) ? prevDays = (prevDays || 30)
-    : prevDays = days; */
     console.log (calendar.view)
     const containerItemList = createContainerItemList(calendar.view, calendar.date, calendar.days);
     return(
         <div className="days">
-          <div id="daysss">
+          <div id="days">
             {containerItemList.map((month) => <CreateContainer
                 key = {month.toString()} 
                 offSet = {month[1]}
@@ -126,67 +92,3 @@ function Days () {
         </div>
       )
 }
-
-/*class Days extends Component {
-    shouldComponentUpdate(nextProps) {
-      return nextProps.userParam.createCalendar == true
-    }
-    render() {
-      const userParam = this.props.userParam
-      /*if (!userParam.createCalendar) {
-        return null;
-      }
-      const view = userParam.userView;
-      const date = userParam.userDate;
-      const days = userParam.userDays;
-      const containerItemList = createContainerItemList(view,date,days);
-      return(
-        <div className="days">
-          <div id="daysss">
-            {containerItemList.map((month) => <CreateContainer
-                key = {month.toString()} 
-                offSet = {month[1]}
-                countOfDays = {month[0]}
-                view={view}/>
-            )} 
-          </div>
-        </div>
-      )
-    }
-  }
-*/
-/*class Days extends Component {
-    shouldComponentUpdate(nextProps) {
-      return nextProps.userParam.createCalendar == true
-    }
-    renderContainer(containerItemList) {
-        console.log(hahahah)
-        return containerItemList.map((month) =>
-        <CreateContainer key = {month.toString()} 
-        offSet = {month[1]}
-        countOfDays = {month[0]}
-        view={view} />
-        )
-      }
-    render() {
-      return(
-        <div className="days">
-          <div id="daysss">
-            <CreateContainerItemList userParam={this.props.userParam} render={this.renderContainer}/>
-          </div>
-        </div>
-      )
-    }
-  }
-  */
-
-
-
-  /*{view, date,} render={containerItemList => (
-                containerItemList.map((month) =>
-                <CreateContainer key = {month.toString()} 
-                offSet = {month[1]}
-                countOfDays = {month[0]}
-                view={view} />
-                )
-            )}/>*/
