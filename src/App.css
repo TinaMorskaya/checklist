@@ -34,10 +34,11 @@ h1 {
     display: flex;
     justify-content: center;
 }
-#daysss {
-    margin-top: 20px;
+#days {
     max-width: 315px; 
+    margin-top: 20px;
     margin-bottom: 40px;
+    
 }
 .days_container {
     display: flex;
@@ -203,6 +204,7 @@ label[for="number"], h3 {
     font-size: 1.1em;
     width: 100%;
     font-weight: normal;
+    margin-bottom: 10px;
 }
 
 p {
@@ -233,14 +235,30 @@ p {
     background-color: red;
 }
 
-label[for="Choice1"] {
-    margin-right: 10px;
+.choicesView {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start; 
+    justify-content: baseline;
+    text-align: left;
+    line-height: 20px;
+    margin-bottom: 20px;
 }
+
+label[for="Choice0"], label[for="Choice1"], label[for="Choice2"] {
+    align-self: flex-end;
+}
+
+.alignLebel {
+    display: flex;
+}
+
 input[type="radio"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin-top: 20px;
+    margin: 10px;
+    margin-bottom: 0px;
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -254,7 +272,7 @@ input[type="radio"]:checked {
     border: 8px solid rgb(197, 196, 196);;
   }
   
-input[type=submit] {
+/*input[type=submit] {
     font-weight: bold;
     width: 100%;
     order:4;
@@ -265,11 +283,7 @@ input[type=submit] {
     border-radius: 10px/20px;
     outline: none;
 }
-
-input[type=submit]:hover {
-   text-shadow: 3px 3px 3px rgb(165, 162, 162);
-}
-
+*/
 footer {
     order: 6;
     background-color: white;
@@ -286,7 +300,7 @@ footer {
     h1 {font-size: 2em; flex-basis: 5%;padding-top: 25px}
     .nameNewHabit { max-width: 310px; flex-basis: 10%; font-size: 1.2em} 
     aside {flex-basis:10%}
-    .days {flex-basis: 60%}
+    .days {flex-basis: 60%; margin-bottom: 10px;}
     footer {flex-basis: 5%; margin-bottom: 10px;}
     .textrule { padding: 5px; }
     .rules {flex-basis: 10%; font-size: 1.3em; flex-flow: row wrap; }
@@ -295,14 +309,12 @@ footer {
     .rule {width: 35px; height: 35px;}
     h1 { padding-top: 5px;}
     #yourrules {margin-bottom: 5px;}
-    #daysss {margin-bottom: 10px;}
-
 }
 
   @media screen  and (max-width: 650px) { 
     .day_item,.rule, .offsetday  {width: 35px; height: 35px;}
     .day_item, .offsetday {margin:5px;}
-    #daysss {max-width: 335px; }
+    #days {max-width: 335px; }
     footer { border-radius: 10px/20px; 
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
         padding: 10px; width: 90%; }
@@ -313,7 +325,7 @@ footer {
   }
 
   @media screen and (min-width: 651px) {
-    ownBody {flex-direction: row nowrap} 
+    .ownBody {flex-direction: row nowrap} 
     h1,.nameNewHabit, .rules,aside { flex-basis: 100%} 
     aside, .rules { flex: 1 6 28%; }
     .days {flex: 3 1 44%;}
@@ -327,7 +339,7 @@ footer {
 
   @media screen and (min-height: 850px) {
       footer {position: fixed; margin-bottom: 10px};
-      #daysss {margin-bottom: 20px;}
+      .days {margin-bottom: 20px;}
   }
 
   @media print and (pointer:fine)  {
