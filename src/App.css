@@ -37,7 +37,6 @@ h1 {
 #days {
     max-width: 315px; 
     margin-top: 20px;
-    margin-bottom: 40px;
     
 }
 .days_container {
@@ -339,7 +338,6 @@ footer {
 
   @media screen and (min-height: 850px) {
       footer {position: fixed; margin-bottom: 10px};
-      .days {margin-bottom: 20px;}
   }
 
   @media print and (pointer:fine)  {
