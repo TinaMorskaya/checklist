@@ -19,13 +19,21 @@ function int (initialSetupItems) {
 }
 
 function setupItemReducer (state, action) {
+  let value = action.value
   switch (action.name) {
     case "userView":
-      return {...state, view: action.value};
+      return {...state, view: value};
     case "userDays":
-      return {...state, days: action.value}
+      if (value > 6 && value < 63) {
+      return {...state, days: value}
+      }
     case "userDate":
-      return {...state, date: action.value};
+      if (value) {
+        let isValid = new Date(value)- new Date(getCurrentDate())
+        if (isValid >= 0) {
+          return {...state, date: value};
+        }
+      }
     default:
       return state;
   }

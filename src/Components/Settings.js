@@ -11,13 +11,8 @@ function DateStart () {
   const [userDate, setUserDate] = useState (calendar.date)
   function handler (event) {
     let value = event.target.value;
-    if (value) {
-      let valid = new Date(value)- new Date(getCurrentDate())
-      if (valid >= 0) {
-           dispatch({name: event.target.name, value: value})
-      }
-    }
     setUserDate(value);
+    dispatch({name: event.target.name, value: value});
   }
    return(
       <div className="openDate" style={userDate == "Simple list"
@@ -44,17 +39,10 @@ function DateStart () {
       setUserDays(value);
         if (value) {
           value = parseInt(value);
-
-                if (value > 6 && value < 63) {
-                    dispatch({
-                        name: event.target.name, value: value})
-                }   
-            }   
-        }
+          dispatch({name: event.target.name, value: value})
+        }     
     }
-    let validationStyle = (userDays < 7 || userDays > 62)
-    ? {backgroundColor: "rgb(255, 178, 178)"} 
-    : {backgroundColor: "gainsboro"}
+  }
     return(
         <>
           <label htmlFor="number">How many days you need?</label>
@@ -66,7 +54,9 @@ function DateStart () {
             maxLength="2" minLength="1" className="number" name="userDays" 
             value={userDays}
             onChange={handler}
-            style={validationStyle}/>
+            style={(userDays < 7 || userDays > 62)
+              ? {backgroundColor: "rgb(255, 178, 178)"} 
+              : {backgroundColor: "gainsboro"}}/>
         </>
       )
     }
