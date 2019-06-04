@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import "/Users/vasiliy/Desktop/Checklist2_Print/src/App.css";
+import "/Users/vasiliy/Desktop/Checklist2_Print/src/client/App.css";
 import {SetupItemDispatch, CalendarSettings} from "../App.js"
 export {Days}
 

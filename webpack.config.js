@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/client/index.js",
   mode: "development",
   module: {
     rules: [
@@ -28,7 +28,10 @@ module.exports = {
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",
-    hotOnly: true
+    hotOnly: true,
+    proxy: {
+      "/api": "http://localhost:8080"
+    }
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };

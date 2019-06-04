@@ -1,5 +1,5 @@
 import React, {PureComponent, useState, useEffect} from "react";
-import "/Users/vasiliy/Desktop/Checklist2_Print/src/App.css"
+import "../App.css"
 export {NameNewHabit}
 
 function NameNewHabit () {
