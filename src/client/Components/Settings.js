@@ -1,5 +1,5 @@
 import React, { useState, PureComponent, useContext} from "react";
-import "/Users/vasiliy/Desktop/Checklist2_Print/src/App.css"
+import "/Users/vasiliy/Desktop/Checklist2_Print/src/client/App.css"
 import {getCurrentDate, isNumberOfDaysCorrect} from "./Helpers.js"
 import {SetupItemDispatch, CalendarSettings} from "../App.js"
 export {Aside}
