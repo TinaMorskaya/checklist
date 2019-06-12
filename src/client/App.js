@@ -6,6 +6,7 @@ import {Aside} from "./Components/Settings.js";
 import {getCurrentDate, isNumberOfDaysCorrect} from "./Components/Helpers.js"
 import {Days} from "./Components/Calendar.js"
 import {NameNewHabit} from "./Components/NameNewHabit.js"
+import {Wallpaper} from "./Components/Unsplash.js"
 export {SetupItemDispatch, CalendarSettings,App}
 
 const SetupItemDispatch = React.createContext(null);
@@ -49,6 +50,7 @@ function App () {
   }, [setupItems])
 
   return(
+    <>
     <div className="ownBody" >
       <h1>Checklist</h1>
       <SetupItemDispatch.Provider value={dispatch}>
@@ -61,6 +63,8 @@ function App () {
       </SetupItemDispatch.Provider>
       <footer>By Tina_Morskaya</footer>
     </div>
+    <Wallpaper/>
+    </>
   );
 
 }
