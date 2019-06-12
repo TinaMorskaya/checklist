@@ -77,7 +77,6 @@ function CreateContainer (props) {
   
 function Days () {
     const calendar = useContext(CalendarSettings);
-    console.log (calendar.view)
     const containerItemList = createContainerItemList(calendar.view, calendar.date, calendar.days);
     return(
         <div className="days">
