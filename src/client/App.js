@@ -3,7 +3,7 @@ import {hot} from "react-hot-loader";
 import "./App.css";
 import {Nav} from "./Components/Rules.js";
 import {Aside} from "./Components/Settings.js";
-import {getCurrentDate, isNumberOfDaysCorrect} from "./Components/Helpers.js"
+import {getCurrentDate, isNumberOfDaysCorrect, useSize} from "./Components/Helpers.js"
 import {Days} from "./Components/Calendar.js"
 import {NameNewHabit} from "./Components/NameNewHabit.js"
 import {Wallpaper} from "./Components/Unsplash.js"
@@ -16,6 +16,7 @@ function int (initialSetupItems) {
   //localStorage.removeItem('SettingsCalendar');
   let previousCalendar = localStorage.getItem('SettingsCalendar');
   let calendar = previousCalendar ? JSON.parse(previousCalendar): initialSetupItems;
+  console.log(calendar)
   return calendar;
 }
 
@@ -41,30 +42,34 @@ function setupItemReducer (state, action) {
 
 }
 
+
 function App () {
   const [setupItems, dispatch] = useReducer (setupItemReducer, 
     {view : "Simple list", days: 30, date: getCurrentDate()}, int);
+  
+  const [sizePage, page] = useSize();
+  const [sizeFlex, flex] = useSize();
   
   useEffect(() => {
     localStorage.setItem('SettingsCalendar', JSON.stringify(setupItems));
   }, [setupItems])
 
   return(
-    <>
-    <div className="ownBody" >
-      <h1>Checklist</h1>
-      <SetupItemDispatch.Provider value={dispatch}>
-        <CalendarSettings.Provider value={setupItems} >
-          <NameNewHabit />
-          <Days />
-          <Nav />
-          <Aside />
-        </CalendarSettings.Provider>
-      </SetupItemDispatch.Provider>
-      <footer>By Tina_Morskaya</footer>
+    <div className="page" ref={page}>
+      <div className="ownBody" ref={flex}>
+        <h1>Checklist</h1>
+        <SetupItemDispatch.Provider value={dispatch}>
+          <CalendarSettings.Provider value={setupItems} >
+            <NameNewHabit />
+            <Days />
+            <Nav />
+            <Aside />
+          </CalendarSettings.Provider>
+        </SetupItemDispatch.Provider>
+        <footer>By Tina_Morskaya</footer>
+      </div>
+      <Wallpaper heightPage={sizePage} heightFlex={sizeFlex}/>
     </div>
-    <Wallpaper/>
-    </>
   );
 
 }
