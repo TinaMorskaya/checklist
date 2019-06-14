@@ -1,4 +1,5 @@
-export {getCurrentDate, isNumberOfDaysCorrect}
+export {getCurrentDate, isNumberOfDaysCorrect, useSize}
+import React, {useEffect, useState} from "react";
 
 function getCurrentDate() {
     var today = new Date;
@@ -25,4 +26,14 @@ function isNumberOfDaysCorrect(text) {
     }
   }
   return true
+}
+
+function useSize() {
+  const [size, setSize] = useState(null);
+  const ref = (node) => {
+    if (node !== null) {
+      setSize(node.getBoundingClientRect().height);
+    }
+  };
+  return [size, ref];
 }
