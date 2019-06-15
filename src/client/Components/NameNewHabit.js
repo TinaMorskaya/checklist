@@ -18,14 +18,16 @@ function NameNewHabit () {
         setName(e.target.value);
     };
     return(
-        <textarea
-          value={name}
-          onChange={handleNameHabbit}
-          className="nameNewHabit"
-          rows="5" cols="30"
-          maxLength="40"
-          placeholder="Type your new habit here..."
-          autoFocus>
-        </textarea>
+        <div className="nameNewHabit">
+            <textarea
+              value={name}
+              onChange={handleNameHabbit}
+              className="newHabit"
+              rows="5" cols="30"
+              maxLength="40"
+              placeholder="Type your new habit here..."
+              autoFocus>
+            </textarea>
+        </div>
       )
 }
