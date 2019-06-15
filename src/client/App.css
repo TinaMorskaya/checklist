@@ -41,6 +41,12 @@
 }
 .credit a {
     text-decoration: none; 
+    text-decoration-color: aliceblue;
+    color: aliceblue;
+}
+
+.credit > span, a {
+    float: left;
 }
 
 .image {
@@ -66,18 +72,35 @@ h1 {
     font-size: 2.5em;
     order:1;
     padding: 30px;
+    color: white;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
 }
 .nameNewHabit {
+    max-height: 80px;
+    order:2;
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.newHabit {
     outline: none;
     text-align: center;
-    font-size: 1.8em;
+    
     font-weight: bold;
     border: 0px;
     resize: none;
     max-height: 80px;
-    order:2;
-
+    color: black;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px/20px;
+    font-size: calc(24px + (30 - 24) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
 }
+
+
 .days {
     order: 4;
     display: flex;
@@ -202,6 +225,8 @@ fieldset {
     border-radius: 5%;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     transition: all 0.32s linear;
+    background-clip: content-box;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .hiddenSettings {
@@ -335,6 +360,10 @@ input[type="radio"]:checked {
 footer {
     order: 6;
     background-color: white;
+    color: black;
+}
+.credit {
+    order: 7;
 }
 
 #error {
@@ -346,10 +375,11 @@ footer {
 @media all and (max-width: 650px) {
     .ownBody {flex-direction: column; align-items: center; justify-content: center;}
     h1 {font-size: 2em; flex-basis: 5%;padding-top: 25px}
-    .nameNewHabit { max-width: 310px; flex-basis: 10%; font-size: 1.2em} 
+    .nameNewHabit { max-width: 310px; flex-basis: 10%} 
     aside {flex-basis:10%}
     .days {flex-basis: 60%; margin-bottom: 10px;}
-    footer {flex-basis: 5%; margin-bottom: 10px;}
+    footer {flex-basis: 2.5%; margin-bottom: 10px;}
+    .credit {flex-basis: 2.5%; margin-bottom: 5px; position: inherit;}
     .textrule { padding: 5px; }
     .rules {flex-basis: 10%; font-size: 1.3em; flex-flow: row wrap; }
     .rule {margin-bottom: 5px;}
@@ -357,6 +387,7 @@ footer {
     .rule {width: 35px; height: 35px;}
     h1 { padding-top: 5px;}
     #yourrules {margin-bottom: 5px;}
+    .newHabit {flex-basis: 100%}
 }
 
   @media screen  and (max-width: 650px) { 
@@ -383,10 +414,13 @@ footer {
         width: 20%; margin-left: 40%; margin-right: 40%; margin-bottom: 30px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
     }
+    .credit {margin-bottom:  0px}
+    .newHabit {flex-basis: 36%}
   }
 
   @media screen and (min-height: 850px) {
       footer {position: fixed; margin-bottom: 10px};
+      .credit {position: fixed; margin-bottom: 0px}
   }
 
   @media print and (pointer:fine)  {
@@ -394,8 +428,9 @@ footer {
     .day_item, .offsetday {margin:5px;}
     aside,h2, .wallpaper {display: none;}
     .textrule {visibility: hidden;}
-    footer {position: fixed; bottom: 0px; width: 100%; margin:0px;}
-    .days_container { margin-bottom: 12px;}
+    footer, .credite {position: fixed; bottom: 5px; width: 100%; margin:0px;}
+    .credit {bottom: 0px}
+    .days_container { margin-bottom: 0px;}
   }
   @media  print and (min-width: 651px) {
     aside, .wallpaper {display:none;}

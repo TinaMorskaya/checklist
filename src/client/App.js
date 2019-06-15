@@ -3,14 +3,15 @@ import {hot} from "react-hot-loader";
 import "./App.css";
 import {Nav} from "./Components/Rules.js";
 import {Aside} from "./Components/Settings.js";
-import {getCurrentDate, isNumberOfDaysCorrect, useSize} from "./Components/Helpers.js"
-import {Days} from "./Components/Calendar.js"
-import {NameNewHabit} from "./Components/NameNewHabit.js"
-import {Wallpaper} from "./Components/Unsplash.js"
+import {getCurrentDate, isNumberOfDaysCorrect, useSize, useImage} from "./Components/Helpers.js"
+import {Days} from "./Components/Calendar.js";
+import {NameNewHabit} from "./Components/NameNewHabit.js";
+import {Wallpaper} from "./Components/Background";
+import {Footer} from "./Components/Footer.js"
 export {SetupItemDispatch, CalendarSettings,App}
 
 const SetupItemDispatch = React.createContext(null);
-const CalendarSettings = React.createContext(null)
+const CalendarSettings = React.createContext(null);
 
 function int (initialSetupItems) {
   //localStorage.removeItem('SettingsCalendar');
@@ -49,6 +50,7 @@ function App () {
   
   const [sizePage, page] = useSize();
   const [sizeFlex, flex] = useSize();
+  const imageAndDescr = useImage();
   
   useEffect(() => {
     localStorage.setItem('SettingsCalendar', JSON.stringify(setupItems));
@@ -66,9 +68,9 @@ function App () {
             <Aside />
           </CalendarSettings.Provider>
         </SetupItemDispatch.Provider>
-        <footer>By Tina_Morskaya</footer>
+        <Footer wall={imageAndDescr[0]} />
       </div>
-      <Wallpaper heightPage={sizePage} heightFlex={sizeFlex}/>
+      <Wallpaper heightPage={sizePage} heightFlex={sizeFlex} image={imageAndDescr[1]}/>
     </div>
   );
 
