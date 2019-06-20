@@ -13,7 +13,7 @@ function OneRule (props) {
 function Nav () {
     const rulesArray = ["5h","4h","3h"];
     return(
-        <ul className="rules">
+        <ul className="rules circleForAll">
             <li id="yourrules">Your rules</li>
             {rulesArray.map((rule) => 
               <OneRule key={rule} textRule={rule} />)

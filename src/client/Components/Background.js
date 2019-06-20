@@ -6,11 +6,10 @@ import "/Users/vasiliy/Desktop/Checklist2_Print/src/client/App.css"
 function Wallpaper (props) {
     const image = props.image;
     if (!image) return null;
-    //const [props.heightPage, props.heightFlex] = [heightPage,heightFlex]
-    let heightImage = props.heightPage > props.heightFlex? props.heightPage: props.heightFlex;
+    const heightImage = props.heightWindow > props.heightFlex? props.heightWindow: props.heightFlex;
     return (   
         <div className="image fullscreen" style={{backgroundImage: "url(" + image + ")",
-            height : `${heightImage+3}px`}}>
+            height : `${heightImage}px`}}>
         </div>
  
     )

@@ -13,6 +13,11 @@
     height: 100%; 
 }
 
+.circleForAll {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
 
 .fullscreen {
     color: white;
@@ -25,15 +30,12 @@
 }
 .credit {
     color: aliceblue;
-    position: absolute;
     bottom: 1rem;
-    left: 1em;
-    right: 1em;
     text-decoration: none;
     box-sizing: border-box;
     z-index: 1;
     display: block;
-    opacity: 1;
+    width: 98%
 }
 
 .credit a:hover {
@@ -88,16 +90,16 @@ h1 {
 .newHabit {
     outline: none;
     text-align: center;
-    
     font-weight: bold;
     border: 0px;
     resize: none;
-    max-height: 80px;
+    max-height: 85px;
     color: black;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 10px/20px;
-    font-size: calc(24px + (30 - 24) * ((100vw - 300px) / (1600 - 300)));
-    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    font-size: calc(22px + (28 - 22) * ((100vw - 310px) / (1100 - 310)));
+    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 310px)/(1100 - 310)));
+    padding: 0px 20px;
+    padding-top: 5px;
 }
 
 
@@ -107,9 +109,8 @@ h1 {
     justify-content: center;
 }
 #days {
-    max-width: 315px; 
+    max-width: 329px; 
     margin-top: 20px;
-    
 }
 .days_container {
     display: flex;
@@ -117,10 +118,10 @@ h1 {
     list-style: none;
     align-content: center; 
     justify-content: flex-start;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
 }
 
-.day_item, .offsetday {  
+.day_item {  
     border-radius: 100%;
     width: 35px;
     height: 35px;
@@ -129,16 +130,16 @@ h1 {
     margin-bottom: 15px; 
     page-break-inside: avoid;
     break-inside: avoid;
-    
+    border-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .week{
-    border-color: white;
     font-size: 1em;
-    margin-bottom: 0px; 
     height: 20px;
 }
 .offsetday {
-    border-color: white;
+    opacity: 0;
 }
 
 .rules {
@@ -155,8 +156,10 @@ h1 {
     border-radius: 100%;
     width: 35px;
     height: 35px;
-    border: 1px black solid;
+    border: 1px rgba(0, 0, 0, 0) solid;
     margin: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 #yourrules {
@@ -165,8 +168,8 @@ h1 {
     border: 0px;
     width: auto;
     height: auto;
-    margin: 0px;
-    margin-bottom: 30px;
+    margin-top: 8px;
+    margin-bottom: 10px;
 
 }
 .textrule { 
@@ -176,7 +179,6 @@ h1 {
 }
 h2 {
     border-radius: 10px/20px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     font-size: 0.7em;
     text-align: center;
     order: 5;
@@ -205,9 +207,8 @@ aside{
     height: 45px;
     flex-basis: 95%;
     order:1;
-    background-color: white;
-    border-radius: 10px/20px;
     transition: all 0.32s linear;
+    box-shadow:none;
 }
 
 #settings:hover {
@@ -222,11 +223,9 @@ form {
 fieldset {
     border:0px;
     margin-top: 20px;
-    border-radius: 5%;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     transition: all 0.32s linear;
-    background-clip: content-box;
-    background-color: rgba(255, 255, 255, 0.6);
+    padding:  0px 10px;
+    position: relative;
 }
 
 .hiddenSettings {
@@ -242,29 +241,39 @@ fieldset {
 }
 
 .openDate {
-    transition: all 0.32s linear;  
+    transition: all 0.32s linear;
+    height: 70px;
+    margin-top: 20px;
 }
 
 label[for="date"] { 
-    margin-top: 40px;
     font-size: 1.1em;
 }
 input[type="date"] {
-    background: gainsboro;
-    margin-top: 10px; 
-    
+    margin-top: 15px;
+    background:	rgba(255, 255, 255, 0.7);
     box-sizing: border-box;
     width: 100%;
     font-size: 1.2em; 
     height: 50px;
     text-align: center;
     outline: none;
-    border: 1px solid gainsboro;
+    border: 1.3px solid rgba(255, 255, 255, 0);
     transition: all 0.32s linear;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    -webkit-border-bottom-left-radius: 50px;
+    -webkit-border-bottom-right-radius: 50px;
+    -moz-border-radius-bottomleft: 50px;
+    -moz-border-radius-bottomright: 50px;
+    position: absolute;
+    bottom:0px;
+    right: 0px;
+    left: 0px;
 }
 
 input[type="date"]:hover {
-    border: 1px rgb(105, 112, 112) solid;
+    border: 1.3px dimgray solid;
     border-image-slice: 20;
 }
 
@@ -286,7 +295,7 @@ p {
 }
 
 .number {
-    background: gainsboro;
+    background:	rgba(255, 255, 255, 0.7);
     margin: 10px;
     margin-top: 0px;
     outline: none;
@@ -296,11 +305,12 @@ p {
     height: 40px;
     width: 40px;
     border-radius: 100%;
-    border: 1px solid gainsboro;
+    border: 1.3px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .number:hover {
-    border: 1px rgb(105, 112, 112) solid;
+    border: 1.3px	dimgray solid;
     transition: all 0.32s linear;
 }
 
@@ -327,6 +337,8 @@ label[for="Choice0"], label[for="Choice1"], label[for="Choice2"] {
 }
 
 input[type="radio"] {
+    background:	rgba(255, 255, 255, 0.7);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -335,14 +347,14 @@ input[type="radio"] {
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    border: 2px solid #999;
+    border: 1.3px solid dimgray;
     transition: 0.2s border linear;
     outline: none;
   
   }
   
 input[type="radio"]:checked {
-    border: 8px solid rgb(197, 196, 196);;
+    border: 8px solid dimgray ;
   }
   
 /*input[type=submit] {
@@ -372,41 +384,49 @@ footer {
 }
 
 
-@media all and (max-width: 650px) {
+@media all and (max-width: 752px) {
     .ownBody {flex-direction: column; align-items: center; justify-content: center;}
     h1 {font-size: 2em; flex-basis: 5%;padding-top: 25px}
     .nameNewHabit { max-width: 310px; flex-basis: 10%} 
     aside {flex-basis:10%}
     .days {flex-basis: 60%; margin-bottom: 10px;}
     footer {flex-basis: 2.5%; margin-bottom: 10px;}
-    .credit {flex-basis: 2.5%; margin-bottom: 5px; position: inherit;}
+    .credit {flex-basis: 2.5%; margin-bottom: 5px;}
     .textrule { padding: 5px; }
-    .rules {flex-basis: 10%; font-size: 1.3em; flex-flow: row wrap; }
+    .rules {flex-basis: 10%; font-size: 1.3em; flex-flow: row wrap; width: 95%;}
     .rule {margin-bottom: 5px;}
-    .week {margin-bottom: 0px; }
-    .rule {width: 35px; height: 35px;}
+    .week {margin-bottom: 0px; height: 20px; }
     h1 { padding-top: 5px;}
     #yourrules {margin-bottom: 5px;}
-    .newHabit {flex-basis: 100%}
+    .newHabit {flex-basis: 100%; height: 65px}
+    #yourrules {margin-top: 10px;}
+    .nameNewHabit { margin-bottom: 20px}
 }
 
-  @media screen  and (max-width: 650px) { 
-    .day_item,.rule, .offsetday  {width: 35px; height: 35px;}
-    .day_item, .offsetday {margin:5px;}
-    #days {max-width: 335px; }
+
+@media screen  and (max-width: 752px) { 
+    .day_item {width: 35px; height: 35px; margin:5px};
+    .rule {width: 35px; height: 35px; margin:5px};
+    #days {min-width: 315px; } /* для запрета переноса*/
     footer { border-radius: 10px/20px; 
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
         padding: 10px; width: 90%; }
-  }
+    .week { height: 20px; margin-bottom: 10px };
+}
 
-  @media all and (max-width: 334px) { 
-    .day_item,.rule, .offsetday {width: 33px; height: 33px;}
-  }
+@media all and (max-width: 334px) { 
+    .day_item {width: 33px; height: 33px;}
+    .rule {width: 33px; height: 33px;}
+    #days {width: 315px;}
+    .week {height: 20px;}
+}
 
-  @media screen and (min-width: 651px) {
+@media screen and (min-width: 753px) {
     .ownBody {flex-direction: row nowrap} 
-    h1,.nameNewHabit, .rules,aside { flex-basis: 100%} 
-    aside, .rules { flex: 1 6 28%; }
+    h1, aside { flex-basis: 100%}
+    .nameNewHabit { flex-basis: 100%}
+    aside { flex: 1 6 28%; }
+    .rules { flex: 1 6 28%; }
     .days {flex: 3 1 44%;}
     .settings {flex-basis: 100%}
     footer { bottom: 20px; border-radius: 10px/20px;
@@ -415,25 +435,37 @@ footer {
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
     }
     .credit {margin-bottom:  0px}
-    .newHabit {flex-basis: 36%}
-  }
+    .newHabit {flex-basis: 38%}
+    #days {width: 315px ;}
+}
 
-  @media screen and (min-height: 850px) {
-      footer {position: fixed; margin-bottom: 10px};
-      .credit {position: fixed; margin-bottom: 0px}
-  }
-
-  @media print and (pointer:fine)  {
-    .day_item,.rule, .offsetday  {width: 30px; height: 30px;}
-    .day_item, .offsetday {margin:5px;}
-    aside,h2, .wallpaper {display: none;}
+@media print   {
+    h1 {display: none;}
+    .day_item,.rule {width: 30px; height: 30px; margin:5px}
+    .week { margin-bottom: 10px; height: 20px; }
+    aside, h2 {display: none;}
     .textrule {visibility: hidden;}
-    footer, .credite {position: fixed; bottom: 5px; width: 100%; margin:0px;}
-    .credit {bottom: 0px}
-    .days_container { margin-bottom: 0px;}
-  }
-  @media  print and (min-width: 651px) {
-    aside, .wallpaper {display:none;}
-    aside, .rules { flex: 1 10 10%; }
+    footer {bottom: 0px; width: 100%; margin:0px; position: fixed;}
+    .credit {display: none}
+    .days_container { margin-top: 20px; margin-left: 17px; margin-bottom: 5px}
+    #days {width: 315px ;}
+    .nameNewHabit {margin-top:10px; max-width: 500px;;}
+    .newHabit {font-size: 24px; height: 60px; padding: 5px;}
+    .rules {padding-bottom: 10px;}
+    #yourrules {margin-top: 5px; font-size: 0.8em;}
+}
+
+/*@media  print and (min-width: 753px) {
+    aside {display:none;}
+    aside { flex: 1 10 10%; }
+    .rules { flex: 1 10 10%; }
     .days {flex: 3 1 80%;}
-  }
+}
+*/
+@media all and (min-height: 1300px) and (min-width: 753px) {
+    footer {position: fixed; bottom: 5px;}
+    .credit {position: fixed; bottom: 5px;};
+}
+@media screen  and (max-width: 1000px) and (min-height: 1000px){
+    .openDate {height: 90px;}
+}

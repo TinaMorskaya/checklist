@@ -22,7 +22,7 @@ function NameNewHabit () {
             <textarea
               value={name}
               onChange={handleNameHabbit}
-              className="newHabit"
+              className="newHabit circleForAll"
               rows="5" cols="30"
               maxLength="40"
               placeholder="Type your new habit here..."
