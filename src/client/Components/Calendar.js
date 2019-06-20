@@ -50,7 +50,7 @@ function AddOffset(props) {
     const countDay = offSet == 0 ? 7 : offSet;
     let offstItems =[];
     for (let j = 1; j < countDay; j++) {
-      offstItems.push(<CreateOneLiElementInConteiner className={"offsetday"} key={"offset" + j}/>)
+      offstItems.push(<CreateOneLiElementInConteiner className={" day_item offsetday"} key={"offset" + j}/>)
     }
     return offstItems
   }

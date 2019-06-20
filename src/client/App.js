@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 import {hot} from "react-hot-loader";
 import "./App.css";
 import {Nav} from "./Components/Rules.js";
@@ -48,16 +48,21 @@ function App () {
   const [setupItems, dispatch] = useReducer (setupItemReducer, 
     {view : "Simple list", days: 30, date: getCurrentDate()}, int);
   
-  const [sizePage, page] = useSize();
-  const [sizeFlex, flex] = useSize();
-  const imageAndDescr = useImage();
-  
   useEffect(() => {
     localStorage.setItem('SettingsCalendar', JSON.stringify(setupItems));
   }, [setupItems])
 
+  const [sizeFlex, flex] = useSize();
+  const [sizeWindow, setHeight] = useState (window.innerHeight);
+  useEffect(()=> {
+    const handleResize = () => setHeight (window.innerHeight)
+    window.addEventListener('resize', handleResize);
+  })
+
+  const imageAndDescr = useImage();
+
   return(
-    <div className="page" ref={page}>
+    <div className="page">
       <div className="ownBody" ref={flex}>
         <h1>Checklist</h1>
         <SetupItemDispatch.Provider value={dispatch}>
@@ -70,7 +75,7 @@ function App () {
         </SetupItemDispatch.Provider>
         <Footer wall={imageAndDescr[0]} />
       </div>
-      <Wallpaper heightPage={sizePage} heightFlex={sizeFlex} image={imageAndDescr[1]}/>
+      <Wallpaper heightWindow = {sizeWindow}  heightFlex={sizeFlex} image={imageAndDescr[1]}/>
     </div>
   );
 

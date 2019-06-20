@@ -8,7 +8,7 @@ function Footer (props) {
     const place = wall.location;
     return (
         <>
-        <footer> By Tina_Morskaya</footer>
+        <footer className="circleForAll"> By Tina_Morskaya</footer>
         <div className="credit">
             <span style={{float: "right"}}>{place? place.title: null}</span>
             <a href={wall.links.html} target="_blank">Photo</a>

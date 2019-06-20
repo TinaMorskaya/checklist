@@ -15,9 +15,9 @@ function DateStart () {
     dispatch({name: event.target.name, value: value});
   }
    return(
-      <div className="openDate" style={userDate == "Simple list"
-          ? {visibility: "hidden",transform: "scale(0,0)"}
-          : {visibility: "visible"}}>
+      <div className="openDate" style={calendar.view == "Simple list"
+          ? {display: "none"}
+          : {display:"block"}}>
           <label htmlFor="date">Enter the date you want to start..</label>
           <input id="date" type="date" name="userDate" 
             min={getCurrentDate()} 
@@ -56,7 +56,7 @@ function DateStart () {
             onChange={handler}
             style={(userDays < 7 || userDays > 62)
               ? {backgroundColor: "rgb(255, 178, 178)"} 
-              : {backgroundColor: "gainsboro"}}/>
+              : {backgroundColor: "rgba(255, 255, 255, 0.7)"}}/>
         </>
       )
     }
@@ -87,7 +87,7 @@ function ChoiceView () {
 function Form (props) {
     return(
         <form>
-          <fieldset className={props.settingsOpacity} >
+          <fieldset className={props.settingsOpacity + " circleForAll"} >
             <div id="whitesqer"></div>
             <h3>Please, select your preferred view:</h3>
             {props.children}
@@ -98,7 +98,7 @@ function Form (props) {
   
 function Settings (props) {
     return(
-        <button id="settings" onClick={props.onClickSettings}>Settings</button>
+        <button id="settings"  className="circleForAll" onClick={props.onClickSettings}>Settings</button>
     )
 }
   
