@@ -1,5 +1,5 @@
 export {getCurrentDate, isNumberOfDaysCorrect, useSize, useImage}
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 
 function getCurrentDate() {
     var today = new Date;
@@ -29,13 +29,13 @@ function isNumberOfDaysCorrect(text) {
 }
 
 function useSize() {
-  const [size, setSize] = useState(null);
+  const [height, setHeight] = useState(null);
   const ref = (node) => {
     if (node !== null) {
-      setSize(node.getBoundingClientRect().height);
+      setHeight(node.getBoundingClientRect().height)
     }
   };
-  return [size, ref];
+  return [height, ref];
 }
 
 function useImage () {
@@ -45,7 +45,6 @@ function useImage () {
       async function buildWall () {
           let url = 'http://localhost:8080/getImageFromUnsplash';
           const data = await (await fetch(url)).json();
-          console.log(data);
           const blobik = await (await fetch(data.urls.raw + '?q=85&w=1920&fit=crop')).blob();
           const newImage = URL.createObjectURL(blobik)
           setWall(data);
