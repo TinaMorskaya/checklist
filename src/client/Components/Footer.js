@@ -1,4 +1,4 @@
-import "/Users/vasiliy/Desktop/Checklist2_Print/src/client/App.css"
+import "../App.css"
 import React from "react";
 export {Footer} 
 
