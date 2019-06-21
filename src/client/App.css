@@ -195,6 +195,7 @@ aside{
     justify-content: center;
     order: 5;
     margin-bottom: 40px;
+    width: 100%;
 }
 
 #settings {
@@ -215,7 +216,7 @@ aside{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-form {
+.forma{
     flex-basis: 95%;
     height: 50%;
     order: 2;
@@ -228,12 +229,20 @@ fieldset {
     position: relative;
 }
 
-.hiddenSettings {
+.hidden {
     opacity: 0;
 }
 
-.openSettings {
+.open {
     opacity: 1;
+}
+
+.tempRemove {
+  display:none
+}
+
+.tempAppear {
+ display: block;
 }
 
 #whitesqer{
@@ -241,25 +250,26 @@ fieldset {
 }
 
 .openDate {
-    transition: all 0.32s linear;
-    height: 70px;
+    height: 75px;
     margin-top: 20px;
 }
 
 label[for="date"] { 
     font-size: 1.1em;
 }
-input[type="date"] {
+
+input[type="date"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+.conteinerDate {
     margin-top: 15px;
     background:	rgba(255, 255, 255, 0.7);
     box-sizing: border-box;
-    width: 100%;
-    font-size: 1.2em; 
     height: 50px;
     text-align: center;
-    outline: none;
     border: 1.3px solid rgba(255, 255, 255, 0);
-    transition: all 0.32s linear;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
     -webkit-border-bottom-left-radius: 50px;
@@ -270,16 +280,25 @@ input[type="date"] {
     bottom:0px;
     right: 0px;
     left: 0px;
+    width: 100%;
 }
 
-input[type="date"]:hover {
+input[type="date"] {
+    background:	rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    height: 50px;
+    text-align: center;
+    outline: none;
+    border:  1.3px solid rgba(255, 255, 255, 0);
+    font-size: 1em; 
+    position: absolute;
+    left: 53%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.conteinerDate:hover {
     border: 1.3px dimgray solid;
-    border-image-slice: 20;
-}
-
-input[type="date"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; 
 }
 
 label[for="number"], h3 {
@@ -378,16 +397,12 @@ footer {
     order: 7;
 }
 
-#error {
-    font-size: 1em;
-    visibility: hidden;
-}
 
 
 @media all and (max-width: 752px) {
     .ownBody {flex-direction: column; align-items: center; justify-content: center;}
     h1 {font-size: 2em; flex-basis: 5%;padding-top: 25px}
-    .nameNewHabit { max-width: 310px; flex-basis: 10%} 
+    .nameNewHabit { max-width: 310px; flex-basis: 10%;} 
     aside {flex-basis:10%}
     .days {flex-basis: 60%; margin-bottom: 10px;}
     footer {flex-basis: 2.5%; margin-bottom: 10px;}
@@ -455,13 +470,6 @@ footer {
     #yourrules {margin-top: 5px; font-size: 0.8em;}
 }
 
-/*@media  print and (min-width: 753px) {
-    aside {display:none;}
-    aside { flex: 1 10 10%; }
-    .rules { flex: 1 10 10%; }
-    .days {flex: 3 1 80%;}
-}
-*/
 @media all and (min-height: 1300px) and (min-width: 753px) {
     footer {position: fixed; bottom: 5px;}
     .credit {position: fixed; bottom: 5px;};

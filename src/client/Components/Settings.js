@@ -19,11 +19,13 @@ function DateStart () {
           ? {display: "none"}
           : {display:"block"}}>
           <label htmlFor="date">Enter the date you want to start..</label>
-          <input id="date" type="date" name="userDate" 
-            min={getCurrentDate()} 
-            value={userDate}
-            onChange={handler}
-          />
+          <div className="conteinerDate">
+            <input id="date" type="date" name="userDate" 
+              min={getCurrentDate()} 
+              value={userDate}
+              onChange={handler}
+            />
+          </div>
       </div>
       )  
   }
@@ -86,33 +88,44 @@ function ChoiceView () {
   
 function Form (props) {
     return(
-        <form>
-          <fieldset className={props.settingsOpacity + " circleForAll"} >
+        <div className="forma">
+          <fieldset className={props.classSettings + " circleForAll"} >
             <div id="whitesqer"></div>
             <h3>Please, select your preferred view:</h3>
             {props.children}
           </fieldset>
-        </form>
+        </div>
     )
 }
   
 function Settings (props) {
     return(
-        <button id="settings"  className="circleForAll" onClick={props.onClickSettings}>Settings</button>
+        <button id="settings"  className="circleForAll" 
+          onClick={props.onClickSettings}>Settings
+        </button>
     )
 }
-  
-function Aside () {
-  const [settingsOpacity, setSettingsOpacity] = useState ("hiddenSettings")
-  function changeSettingsOpacity() {
-      setSettingsOpacity((settingsOpacity== "hiddenSettings") ? "openSettings" 
-      : "hiddenSettings")
+
+function intClass(widthWindow) {
+   return (widthWindow < 753)? "tempRemove" :"hidden"
+}
+
+function Aside (props) {
+  const [classSettings, setClass] = useState(() => {const initialState = intClass(props.widthWindow);
+    return initialState;})
+  function changeClass() {
+    if (props.widthWindow < 753) {
+      setClass(classSettings === "tempAppear"? "tempRemove" :"tempAppear");
     }
+    else {
+      setClass(classSettings === "hidden"? "open" :"hidden");
+    }
+  }
     return (
-        <aside>
+        <aside onClick = {props.forceUpdate}>
           <Settings 
-                onClickSettings={changeSettingsOpacity}/>
-          <Form settingsOpacity={settingsOpacity}>
+                onClickSettings={changeClass}/>
+          <Form classSettings={classSettings}>
                 <ChoiceView/>
                 <HowDays />
                 <DateStart />

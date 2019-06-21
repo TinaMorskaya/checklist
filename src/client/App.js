@@ -52,14 +52,21 @@ function App () {
     localStorage.setItem('SettingsCalendar', JSON.stringify(setupItems));
   }, [setupItems])
 
-  const [sizeFlex, flex] = useSize();
-  const [sizeWindow, setHeight] = useState (window.innerHeight);
+  const [heightFlex, flex] = useSize();
+  const [widthWindow, setWidth] = useState(window.innerWidth);
+  const [heightWindow, setHeight] = useState(window.innerHeight);
   useEffect(()=> {
-    const handleResize = () => setHeight (window.innerHeight)
+    const handleResize = () => setHeight(window.innerHeight); setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
   })
 
   const imageAndDescr = useImage();
+
+  const [click, sizeAfterClick] = useState(false)
+  function forceUpdate() {
+    sizeAfterClick(click? false :true);
+    console.log("kkkkkkkkkkk")
+  }
 
   return(
     <div className="page">
@@ -70,12 +77,15 @@ function App () {
             <NameNewHabit />
             <Days />
             <Nav />
-            <Aside />
+            <Aside  widthWindow={widthWindow} forceUpdate={forceUpdate}/>
           </CalendarSettings.Provider>
         </SetupItemDispatch.Provider>
         <Footer wall={imageAndDescr[0]} />
       </div>
-      <Wallpaper heightWindow = {sizeWindow}  heightFlex={sizeFlex} image={imageAndDescr[1]}/>
+      <Wallpaper 
+        heightWindow={heightWindow}  
+        heightFlex={heightFlex} 
+        image={imageAndDescr[1]}/>
     </div>
   );
 
