@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/vasiliy/Desktop/Checklist2_Print/src/client/App.css"
+import "../App.css"
 export {Nav}
 
 function OneRule (props) {

@@ -1,5 +1,5 @@
 export {getCurrentDate, isNumberOfDaysCorrect, useSize, useImage}
-import React, {useEffect, useState, useCallback} from "react";
+import React, {useEffect, useState} from "react";
 
 function getCurrentDate() {
     var today = new Date;
