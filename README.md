@@ -2,7 +2,7 @@
 
 ![Preview of Checklist](preview.jpg)
 
-## Descripthion
+## Description
 
 This is the simple printable checklist with 3 rules. You can choose view of checklist, choose how many days you want to keep track of something important stuff, and choose date, when you want to start this. The background of checklist is random photo from https://unsplash.com.
 
