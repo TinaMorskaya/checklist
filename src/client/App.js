@@ -62,10 +62,9 @@ function App () {
 
   const imageAndDescr = useImage();
 
-  const [click, sizeAfterClick] = useState(false)
+  const [click, sizeAfterClick] = useState(false);
   function forceUpdate() {
     sizeAfterClick(click? false :true);
-    console.log("kkkkkkkkkkk")
   }
 
   return(
